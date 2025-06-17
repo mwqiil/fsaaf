@@ -3,552 +3,978 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Самурайский Бобр | Чай. Кофе. Киборги.</title>
+    <title>Эспрессо-Мания | Современная кофейня</title>
     <style>
+        /* Глобальные переменные */
         :root {
-            --main-color: #e31b23; /* Кроваво-красный */
-            --secondary-color: #1a1a2e; /* Тёмно-синий */
-            --accent-color: #ffcc00; /* Неоново-жёлтый */
-            --light-color: #f0f0f0; /* Светло-серый */
-            --dark-color: #0a0a0a; /* Чёрный */
-            --neon-pink: #ff00ff; /* Киборг-розовый */
-            --font-main: 'Noto Serif JP', serif;
-            --font-secondary: 'Rajdhani', sans-serif;
+            --primary: #6F4E37; /* Кофейный */
+            --secondary: #C4A484; /* Бежевый */
+            --accent: #8B4513; /* Коричневый */
+            --light: #F5F5DC; /* Светлый фон */
+            --dark: #3E2723; /* Тёмный текст */
+            --white: #FFFFFF;
+            --black: #000000;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --font-main: 'Playfair Display', serif;
+            --font-secondary: 'Montserrat', sans-serif;
         }
 
+        /* Базовые стили */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: var(--font-secondary);
-            background-color: var(--secondary-color);
-            color: var(--light-color);
-            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.7;
             overflow-x: hidden;
-            background-image: 
-                url('https://i.imgur.com/JQJQJQJ.png'), /* Традиционный японский узор */
-                linear-gradient(to bottom, rgba(26, 26, 46, 0.9), rgba(10, 10, 10, 1));
-            background-blend-mode: overlay;
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3, h4, h5, h6 {
             font-family: var(--font-main);
             font-weight: 700;
-            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--accent-color);
-            letter-spacing: 2px;
+            line-height: 1.3;
         }
 
-        /* АНИМАЦИИ */
-        @keyframes neon-glow {
-            0% { text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--accent-color); }
-            50% { text-shadow: 0 0 15px var(--neon-pink), 0 0 25px var(--accent-color); }
-            100% { text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--accent-color); }
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        @keyframes scanline {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 100vh; }
+        ul {
+            list-style: none;
         }
 
-        /* ХЕДЕР (в стиле кибер-додзё) */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Хедер */
         header {
-            background: rgba(26, 26, 46, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--neon-pink);
             position: fixed;
             width: 100%;
+            top: 0;
+            left: 0;
             z-index: 1000;
+            padding: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
             padding: 1rem 0;
         }
 
-        .header-content {
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
         }
 
         .logo {
-            font-family: var(--font-main);
             font-size: 2rem;
-            color: var(--accent-color);
-            text-decoration: none;
+            font-weight: 700;
+            color: var(--primary);
             position: relative;
-            animation: neon-glow 3s infinite;
         }
 
-        .logo::before {
-            content: "侍";
-            position: absolute;
-            left: -30px;
-            top: -5px;
-            font-size: 1.5rem;
-            opacity: 0.8;
+        .logo span {
+            color: var(--accent);
         }
 
         .logo::after {
-            content: "ビーバー";
+            content: '';
             position: absolute;
-            right: -70px;
             bottom: -5px;
-            font-size: 0.8rem;
-            color: var(--neon-pink);
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
         }
 
-        nav ul {
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-links {
             display: flex;
-            list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
-        nav a {
-            color: var(--light-color);
-            text-decoration: none;
+        .nav-links a {
             font-weight: 500;
             font-size: 1.1rem;
             position: relative;
             padding: 0.5rem 0;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        nav a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--neon-pink);
-            transition: width 0.3s ease;
+            background: var(--accent);
+            transition: var(--transition);
         }
 
-        nav a:hover::after {
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        /* ГЛАВНЫЙ ЭКРАН (с эффектом голограммы) */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Герой секция */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
             position: relative;
             overflow: hidden;
-            background: 
-                linear-gradient(45deg, 
-                    rgba(227, 27, 35, 0.1) 0%, 
-                    rgba(26, 26, 46, 0.8) 50%, 
-                    rgba(255, 204, 0, 0.1) 100%),
-                url('https://i.imgur.com/9Q9Q9Q9.jpg') no-repeat center center/cover;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(
-                    rgba(0, 0, 0, 0.7) 0%,
-                    transparent 20%,
-                    transparent 80%,
-                    rgba(0, 0, 0, 0.7) 100%
-                ),
-                url('https://i.imgur.com/8Q8Q8Q8.png') repeat;
-            animation: scanline 5s linear infinite;
-            opacity: 0.3;
-            pointer-events: none;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 0 2rem;
-            position: relative;
-            z-index: 1;
+            color: var(--white);
+            animation: fadeIn 1.5s ease-out;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #ffcc00, #ff00ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
+            line-height: 1.1;
         }
 
         .hero p {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: var(--light-color);
-            text-shadow: 0 0 5px var(--neon-pink);
+            max-width: 600px;
+            margin-bottom: 3rem;
         }
 
-        /* КНОПКИ (как в Cyberpunk 2077) */
         .btn {
             display: inline-block;
-            background: transparent;
-            color: var(--light-color);
-            padding: 1rem 2rem;
-            border: 2px solid var(--neon-pink);
-            border-radius: 0;
-            text-decoration: none;
-            font-weight: bold;
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            font-family: var(--font-secondary);
-            margin: 0 1rem;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
-            transition: all 0.5s ease;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: 2px solid transparent;
         }
 
         .btn:hover {
-            color: var(--dark-color);
-            background: var(--neon-pink);
-            box-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+            background: transparent;
+            border-color: var(--white);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .btn:hover::before {
-            left: 100%;
+        .btn-outline {
+            background: transparent;
+            border-color: var(--white);
+            margin-left: 1rem;
         }
 
-        /* СЕКЦИИ (сетка в стиле киберпанк) */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* О кофейне */
+        .about {
+            padding: 8rem 0;
             position: relative;
         }
 
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(
-                    rgba(255, 0, 255, 0.05) 1px, 
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255, 0, 255, 0.05) 1px, 
-                    transparent 1px
-                );
-            background-size: 20px 20px;
-            pointer-events: none;
-            z-index: -1;
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
+            margin-bottom: 5rem;
         }
 
         .section-title h2 {
             font-size: 3rem;
-            color: var(--accent-color);
+            color: var(--primary);
             display: inline-block;
-            padding-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1.5rem;
         }
 
         .section-title h2::after {
             content: '';
             position: absolute;
-            width: 100px;
-            height: 3px;
-            background: var(--neon-pink);
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 10px var(--neon-pink);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
         }
 
-        /* МЕНЮ (карточки с эффектом голограммы) */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transform: rotate(-2deg);
+            transition: var(--transition);
+        }
+
+        .about-image:hover {
+            transform: rotate(0deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-image img {
+            transition: transform 0.8s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Меню */
+        .menu {
+            padding: 8rem 0;
+            background: var(--light);
+        }
+
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
         }
 
         .menu-item {
-            background: rgba(26, 26, 46, 0.7);
-            border: 1px solid var(--neon-pink);
-            border-radius: 0;
+            background: var(--white);
+            border-radius: 10px;
             overflow: hidden;
-            transition: all 0.3s ease;
-            position: relative;
-            backdrop-filter: blur(5px);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
         .menu-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 0 20px var(--neon-pink);
-        }
-
-        .menu-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                45deg,
-                transparent 65%,
-                rgba(255, 0, 255, 0.1) 100%
-            );
-            pointer-events: none;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .menu-item img {
-            width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
-            filter: grayscale(30%) contrast(120%);
-            transition: all 0.5s ease;
+            transition: transform 0.8s ease;
         }
 
         .menu-item:hover img {
-            filter: grayscale(0%) contrast(100%);
+            transform: scale(1.1);
         }
 
         .menu-item-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .menu-item h3 {
             font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            color: var(--primary);
         }
 
         .menu-item-price {
-            font-weight: bold;
-            color: var(--neon-pink);
+            font-weight: 700;
+            color: var(--accent);
             font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-family: var(--font-secondary);
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         .menu-item p {
-            margin-bottom: 1rem;
-            color: var(--light-color);
-            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+            font-size: 1rem;
         }
 
-        /* ФУТЕР (в стиле неон-вывески) */
-        footer {
-            background: var(--dark-color);
-            padding: 3rem 0;
-            border-top: 1px solid var(--neon-pink);
+        /* Отзывы */
+        .testimonials {
+            padding: 8rem 0;
+            background: var(--white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .testimonial {
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial::before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(111, 78, 55, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .testimonial p {
+            margin-bottom: 2rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1.5rem;
+            border: 3px solid var(--accent);
+        }
+
+        .author-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: #777;
+            margin: 0;
+            font-style: normal;
+        }
+
+        /* Контакты */
+        .contact {
+            padding: 8rem 0;
+            background: var(--light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
             position: relative;
         }
 
-        footer::before {
+        .contact-info h3::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: -10px;
             left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .contact-info p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            margin-top: 3rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-detail i {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-detail div {
+            flex: 1;
+        }
+
+        .contact-detail strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+
+        .contact-form form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 1rem;
+        }
+
+        .form-control {
             width: 100%;
-            height: 100%;
-            background: url('https://i.imgur.com/7Q7Q7Q7.png') repeat;
-            opacity: 0.1;
-            pointer-events: none;
+            padding: 1rem 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            transition: var(--transition);
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.2);
+            background: var(--white);
+        }
+
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Футер */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 5rem 0 2rem;
         }
 
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .footer-column h3 {
             font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
+            margin-bottom: 2rem;
+            color: var(--secondary);
             position: relative;
-            display: inline-block;
+            padding-bottom: 1rem;
         }
 
         .footer-column h3::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50%;
+            width: 40px;
             height: 2px;
-            background: var(--neon-pink);
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
         }
 
         .footer-column p {
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .footer-links li {
             margin-bottom: 1rem;
-            color: var(--light-color);
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
         }
 
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: var(--light-color);
-            transition: all 0.3s ease;
+            color: var(--white);
+            transition: var(--transition);
         }
 
         .social-links a:hover {
-            background: var(--neon-pink);
-            color: var(--dark-color);
+            background: var(--secondary);
+            color: var(--dark);
             transform: translateY(-3px);
-            box-shadow: 0 0 10px var(--neon-pink);
         }
 
         .copyright {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 0, 255, 0.3);
-            color: var(--light-color);
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
         }
 
-        /* АДАПТИВНОСТЬ */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
+        /* Декоративные элементы */
+        .coffee-bean {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%238B4513"><path d="M20 3H4v10a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-3h2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 5h-2V5h2zM2 21h18v-2H2z"/></svg>') no-repeat center center;
+            opacity: 0.2;
+            animation: float 6s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .coffee-bean-1 {
+            top: 20%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .coffee-bean-2 {
+            top: 60%;
+            right: 8%;
+            animation-delay: 1s;
+        }
+
+        .coffee-bean-3 {
+            bottom: 10%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
             }
 
-            nav ul {
-                margin-top: 1rem;
+            .about-image {
+                order: -1;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 0;
+                border-bottom: 1px solid #eee;
+            }
+
+            .mobile-menu-btn {
+                display: block;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .btn {
-                margin: 0.5rem 0;
-                display: block;
-                width: 100%;
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .menu-grid, .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .about-text h3, .contact-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .menu-item-content, .testimonial, .contact-form form {
+                padding: 1.5rem;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <a href="#" class="logo">Самурайский Бобр</a>
+    <header id="header">
+        <div class="header-container">
+            <a href="#" class="logo">Эспрессо<span>Мания</span></a>
             <nav>
-                <ul>
+                <ul class="nav-links">
                     <li><a href="#home">Главная</a></li>
                     <li><a href="#about">О нас</a></li>
                     <li><a href="#menu">Меню</a></li>
                     <li><a href="#testimonials">Отзывы</a></li>
                     <li><a href="#contact">Контакты</a></li>
                 </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Чай. Кофе. Киборги.</h1>
-            <p>Где традиции сёгунов встречаются с технологиями будущего</p>
+            <h1>Искусство в каждой чашке</h1>
+            <p>Откройте для себя премиальные сорта кофе из лучших регионов мира, приготовленные с мастерством и страстью</p>
             <div class="btn-group">
-                <a href="#menu" class="btn">Исследовать меню</a>
-                <a href="#contact" class="btn">Забронировать</a>
+                <a href="#menu" class="btn">Наше меню</a>
+                <a href="#contact" class="btn btn-outline">Забронировать столик</a>
             </div>
         </div>
+        <div class="coffee-bean coffee-bean-1"></div>
+        <div class="coffee-bean coffee-bean-2"></div>
     </section>
 
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>Наша история</h2>
+                <h2>Наша философия</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>2187 год. Токио. Пост-кибер-Эдо.</h3>
-                    <p>Основанная бывшим кибер-ронином, наша кофейня сочетает древние чайные церемонии с нейроинтерфейсами. Здесь самурайские традиции переплетаются с цифровым миром.</p>
-                    <p>Наши бариста — мастера меча и кофемашин. Они знают 1000 способов приготовить матчу и взломать ICE (Intrusion Countermeasures Electronics).</p>
+                    <h3>Кофейная алхимия</h3>
+                    <p>Основанная в 2010 году, Эспрессо-Мания переосмысливает традиции кофейной культуры. Мы не просто готовим кофе - мы создаем произведения искусства в каждой чашке.</p>
+                    <p>Наши зерна проходят строгий отбор у лучших фермеров Эфиопии, Колумбии и Коста-Рики. Эксклюзивная технология обжарки раскрывает глубину вкуса и неповторимый аромат.</p>
+                    <p>Каждый наш бариста - настоящий мастер, прошедший обучение у чемпионов мировых чемпионатов бариста. Они знают, как превратить процесс приготовления кофе в магическое действо.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://i.imgur.com/6Q6Q6Q6.jpg" alt="Кибер-додзё">
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Интерьер кофейни">
                 </div>
             </div>
         </div>
+        <div class="coffee-bean coffee-bean-3"></div>
     </section>
 
     <section class="menu" id="menu">
         <div class="container">
             <div class="section-title">
-                <h2>Меню</h2>
+                <h2>Кофейная карта</h2>
             </div>
             <div class="menu-grid">
                 <div class="menu-item">
-                    <img src="https://i.imgur.com/5Q5Q5Q5.jpg" alt="Нейро-матча">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Эспрессо">
                     <div class="menu-item-content">
-                        <h3>Нейро-матча</h3>
-                        <div class="menu-item-price">420 ¥</div>
-                        <p>Зелёный чай с nano-энзимами для ускорения синаптических связей.</p>
+                        <h3>Эспрессо Премиум</h3>
+                        <div class="menu-item-price">250 ₽</div>
+                        <p>Интенсивный вкус с нотами горького шоколада и карамели. Подается с мини-макаруном.</p>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="https://i.imgur.com/4Q4Q4Q4.jpg" alt="Кибер-раф">
+                    <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Латте">
                     <div class="menu-item-content">
-                        <h3>Кибер-раф</h3>
-                        <div class="menu-item-price">380 ¥</div>
-                        <p>Кофе с чипом CBD и голографической пеной.</p>
+                        <h3>Латте Арт</h3>
+                        <div class="menu-item-price">320 ₽</div>
+                        <p>Нежный кофейный напиток с молоком и авторским латте-артом на выбор.</p>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="https://i.imgur.com/3Q3Q3Q3.jpg" alt="Сякюхай латте">
+                    <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Колд брю">
                     <div class="menu-item-content">
-                        <h3>Сякюхай латте</h3>
-                        <div class="menu-item-price">450 ¥</div>
-                        <p>Сакура + васаби + кокосовое молоко. Только для смелых.</p>
+                        <h3>Колд Брю</h3>
+                        <div class="menu-item-price">350 ₽</div>
+                        <p>Кофе холодного заваривания с 24-часовой экстракцией. Насыщенный вкус с нотами цитрусов.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Отзывы</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"Эспрессо здесь просто божественный! Никогда не думала, что кофе может иметь такой сложный вкусовой профиль. Теперь это мое обязательное место для утреннего ритуала."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Анна">
+                        <div class="author-info">
+                            <h4>Анна К.</h4>
+                            <p>Постоянный гость</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"Как бариста с 10-летним стажем, я высоко оцениваю качество зерен и мастерство бариста. Особенно впечатлил колд брю - идеальный баланс вкусов. Рекомендую всем ценителям!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Дмитрий">
+                        <div class="author-info">
+                            <h4>Дмитрий С.</h4>
+                            <p>Профессиональный бариста</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Контакты</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Мы ждем вас</h3>
+                    <p>Наша кофейня - это место, где рождаются идеи, заключаются сделки и просто наслаждаются моментом. Приходите за вдохновением и идеальным кофе.</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Адрес</strong>
+                                <p>ул. Кофейная, 15, г. Москва</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Телефон</strong>
+                                <p>+7 (495) 123-45-67</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <p>hello@espressomania.ru</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" class="form-control" placeholder="Как вас зовут?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Ваш email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" class="form-control" placeholder="Ваше сообщение или бронь столика" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Отправить</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -557,23 +983,65 @@
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h3>Самурайский Бобр</h3>
-                <p>Чай. Кофе. Киборги.</p>
+                <h3>Эспрессо-Мания</h3>
+                <p>Искусство в каждой чашке. С 2010 года мы создаем кофе, который вдохновляет.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
                 </div>
             </div>
             <div class="footer-column">
-                <h3>Контакты</h3>
-                <p>Ночной город, Улица Кибер-сёгуна, 47</p>
-                <p>+81 3-XXXX-XXXX</p>
+                <h3>Часы работы</h3>
+                <p>Пн-Пт: 8:00 - 22:00</p>
+                <p>Сб-Вс: 9:00 - 23:00</p>
+            </div>
+            <div class="footer-column">
+                <h3>Быстрые ссылки</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#menu">Меню</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
             </div>
         </div>
         <div class="copyright">
-            <p>© 2187 Самурайский Бобр. Все права защищены корпорацией Arasaka.</p>
+            <p>&copy; 2023 Эспрессо-Мания. Все права защищены.</p>
         </div>
     </footer>
+
+    <script>
+        // Мобильное меню
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Эффект при скролле
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
