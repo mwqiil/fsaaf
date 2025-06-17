@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gourmet Haven - Изысканная кухня</title>
+    <title>Morning Brew - Пробуждение вкуса</title>
     <style>
         :root {
-            --main-color: #8B0000; /* Темно-красный */
-            --secondary-color: #CD5C5C; /* Индийский красный */
-            --accent-color: #B22222; /* Огненно-красный */
-            --light-color: #FFF5EE; /* Морская ракушка */
-            --dark-color: #2F4F4F; /* Темный грифельно-серый */
+            --main-color: #6F4E37; /* Кофейный */
+            --secondary-color: #C4A484; /* Бежевый */
+            --accent-color: #8B4513; /* Коричневый */
+            --light-color: #F5F5DC; /* Бежевый светлый */
+            --dark-color: #3E2723; /* Темно-коричневый */
             --font-size: 16px;
             --font-main: 'Playfair Display', serif;
             --font-secondary: 'Montserrat', sans-serif;
@@ -99,7 +99,7 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             height: 80vh;
             display: flex;
             align-items: center;
@@ -304,7 +304,7 @@
             top: 20px;
             left: 20px;
             font-size: 4rem;
-            color: rgba(139, 0, 0, 0.1);
+            color: rgba(111, 78, 55, 0.1);
             font-family: Georgia, serif;
             line-height: 1;
         }
@@ -414,7 +414,7 @@
         .form-control:focus {
             border-color: var(--main-color);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.2);
+            box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.2);
         }
 
         textarea.form-control {
@@ -608,13 +608,13 @@
             animation: fadeIn 1s ease-out forwards;
         }
 
-        /* Ресторанные элементы */
-        .restaurant-icon {
+        /* Кофейные элементы */
+        .coffee-icon {
             display: inline-block;
             width: 24px;
             height: 24px;
             background-color: var(--main-color);
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z'/%3E%3C/svg%3E") no-repeat center;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 3H4v10a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-3h2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 5h-2V5h2zM2 21h18v-2H2z'/%3E%3C/svg%3E") no-repeat center;
             vertical-align: middle;
             margin-right: 8px;
         }
@@ -625,7 +625,7 @@
 <body>
     <header>
         <div class="header-content">
-            <a href="#" class="logo">Gourmet<span>Haven</span></a>
+            <a href="#" class="logo">Morning<span>Brew</span></a>
             <nav>
                 <ul>
                     <li><a href="#home">Главная</a></li>
@@ -640,8 +640,8 @@
 
     <section class="hero" id="home">
         <div class="hero-content animated">
-            <h1>Изысканная кухня в уютной атмосфере</h1>
-            <p>Откройте для себя неповторимые вкусы наших блюд, приготовленных с любовью из лучших ингредиентов</p>
+            <h1>Пробуждение вкуса в каждой чашке</h1>
+            <p>Начните свой день с идеального кофе от наших бариста-профессионалов</p>
             <div class="btn-group">
                 <a href="#menu" class="btn">Наше меню</a>
                 <a href="#contact" class="btn btn-secondary">Забронировать столик</a>
@@ -652,17 +652,17 @@
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>Наша история</h2>
+                <h2>Наша философия</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Ресторан с душой</h3>
-                    <p>Основанный в 2025 году, Gourmet Haven быстро стал любимым местом для ценителей качественной кухни. Наша миссия - дарить гостям незабываемые гастрономические впечатления и уютную атмосферу.</p>
-                    <p>Мы тщательно отбираем лучшие ингредиенты со всего мира и готовим их по уникальным рецептам, чтобы раскрыть весь потенциал вкуса и аромата.</p>
-                    <p>Наши повара - настоящие профессионалы, которые превращают приготовление пищи в искусство.</p>
+                    <h3>Кофейня с характером</h3>
+                    <p>Основанная в 2015 году, Morning Brew создавалась как место, где каждый может найти свой идеальный кофе. Мы верим, что хороший кофе - это не просто напиток, а искусство, которое может изменить ваш день.</p>
+                    <p>Мы сотрудничаем напрямую с фермерами из Эфиопии, Колумбии и Бразилии, чтобы привезти вам лучшие зерна. Наша обжарка - это баланс между традициями и инновациями.</p>
+                    <p>Наши бариста проходят строгий отбор и обучение, чтобы приготовить для вас кофе именно так, как вы любите.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Интерьер ресторана">
+                    <img src="https://images.unsplash.com/photo-1463797221720-6b07e6426c24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Интерьер кофейни Morning Brew">
                 </div>
             </div>
         </div>
@@ -671,55 +671,55 @@
     <section class="menu" id="menu">
         <div class="container">
             <div class="section-title">
-                <h2>Наше меню</h2>
+                <h2>Кофейная карта</h2>
             </div>
             <div class="menu-grid">
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Стейк">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Эспрессо">
                     <div class="menu-item-content">
-                        <h3>Стейк Рибай</h3>
-                        <div class="menu-item-price">2500 ₽</div>
-                        <p>Премиальный кусок говядины с мраморной текстурой, приготовленный на гриле с розмарином.</p>
+                        <h3>Эспрессо</h3>
+                        <div class="menu-item-price">180 ₽</div>
+                        <p>Крепкий и насыщенный кофе с густой пенкой. Подается в маленькой чашке.</p>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="https://i.postimg.cc/5NYx1PL1/1656039068-28-100foto-club-p-pasta-karbonara-s-yaitsom-sverkhu-54.jpg" alt="Паста">
+                    <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Капучино">
                     <div class="menu-item-content">
-                        <h3>Паста Карбонара</h3>
-                        <div class="menu-item-price">1200 ₽</div>
-                        <p>Классическая итальянская паста с гуанчиале, яичным соусом и пармезаном.</p>
+                        <h3>Капучино</h3>
+                        <div class="menu-item-price">240 ₽</div>
+                        <p>Идеальный баланс эспрессо, молока и воздушной молочной пены.</p>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="https://i.postimg.cc/2SdN8g6p/image.png" alt="Салат">
+                    <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Латте">
                     <div class="menu-item-content">
-                        <h3>Салат с уткой</h3>
-                        <div class="menu-item-price">1500 ₽</div>
-                        <p>Хрустящая утиная грудка с листьями салата, грушей и ореховой заправкой.</p>
+                        <h3>Латте</h3>
+                        <div class="menu-item-price">260 ₽</div>
+                        <p>Нежный кофейный напиток с большим количеством молока и тонким слоем пены.</p>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Десерт">
+                    <img src="https://images.unsplash.com/photo-1522992319-0365e5f11656?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Флэт Уайт">
                     <div class="menu-item-content">
-                        <h3>Тирамису</h3>
-                        <div class="menu-item-price">800 ₽</div>
-                        <p>Классический итальянский десерт с савоярди, кофейной пропиткой и кремом маскарпоне.</p>
+                        <h3>Флэт Уайт</h3>
+                        <div class="menu-item-price">250 ₽</div>
+                        <p>Двойной эспрессо с микропеной, создающий насыщенный кофейный вкус.</p>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="https://i.postimg.cc/mk3K2HLY/image.png" alt="Морепродукты">
+                    <img src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Раф">
                     <div class="menu-item-content">
-                        <h3>Морской коктейль</h3>
-                        <div class="menu-item-price">1800 ₽</div>
-                        <p>Ассорти из свежих морепродуктов с чесночным соусом и лимоном.</p>
+                        <h3>Раф кофе</h3>
+                        <div class="menu-item-price">280 ₽</div>
+                        <p>Взбитая смесь эспрессо, сливок и ванильного сиропа - наш фирменный напиток.</p>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <img src="https://i.postimg.cc/nhVfr0QC/image.png" alt="Вино">
+                    <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Десерты">
                     <div class="menu-item-content">
-                        <h3>Винная карта</h3>
-                        <div class="menu-item-price">от 500 ₽/бокал</div>
-                        <p>Эксклюзивная подборка вин из лучших винодельческих регионов мира.</p>
+                        <h3>Десерты</h3>
+                        <div class="menu-item-price">от 200 ₽</div>
+                        <p>Домашние десерты: чизкейк, тирамису, брауни и другие сладости.</p>
                     </div>
                 </div>
             </div>
@@ -729,36 +729,36 @@
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2>Отзывы наших гостей</h2>
+                <h2>Что говорят наши гости</h2>
             </div>
             <div class="testimonial-grid">
                 <div class="testimonial">
-                    <p>Лучший ресторан в городе! Атмосфера просто волшебная, персонал очень дружелюбный. Стейк был приготовлен идеально. Обязательно вернусь снова.</p>
+                    <p>Лучший капучино в городе! Бариста настоящие профессионалы, а атмосфера в кофейне просто вдохновляет на продуктивный день. Теперь это мое обязательное утреннее место.</p>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Анна">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Алиса">
                         <div class="author-info">
-                            <h4>Анна К.</h4>
-                            <p>Постоянный гость</p>
+                            <h4>Алиса М.</h4>
+                            <p>Фотограф, постоянный гость</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial">
-                    <p>Паста Карбонара просто божественная! Нигде больше не пробовала такой идеальный баланс вкуса. Рекомендую всем ценителям итальянской кухни.</p>
+                    <p>Как кофейный сомелье, я высоко оцениваю качество зерен и мастерство бариста. Особенно впечатлил фирменный раф - идеальный баланс вкусов. Рекомендую всем ценителям!</p>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Дмитрий">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Артем">
                         <div class="author-info">
-                            <h4>Дмитрий С.</h4>
-                            <p>Гастрономический эксперт</p>
+                            <h4>Артем К.</h4>
+                            <p>Кофейный эксперт</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial">
-                    <p>Замечательное место для романтического ужина и встреч с друзьями. Винная карта впечатляет, а шеф-повар настоящий мастер своего дела.</p>
+                    <p>Обожаю приходить сюда работать - отличный Wi-Fi, удобные места и, конечно, божественный кофе. Персонал всегда улыбается и помнит мой любимый заказ. 10/10!</p>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Елена">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Виктория">
                         <div class="author-info">
-                            <h4>Елена В.</h4>
-                            <p>Ресторанный критик</p>
+                            <h4>Виктория С.</h4>
+                            <p>Копирайтер, фрилансер</p>
                         </div>
                     </div>
                 </div>
@@ -769,32 +769,32 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Контакты</h2>
+                <h2>Нас найти</h2>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Приходите в гости</h3>
-                    <p>Мы открыты ежедневно с 12:00 до 23:00. Ждем вас за изысканными блюдами и отличным обслуживанием!</p>
+                    <h3>Ждем вас</h3>
+                    <p>Мы открыты ежедневно с 7:00 до 22:00. Приходите за порцией вдохновения и отличного кофе!</p>
                     <div class="contact-details">
                         <div class="contact-detail">
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <strong>Адрес</strong>
-                                <p>ул. Гурмэ, 30, г. Москва</p>
+                                <p>ул. Утренняя, 8, г. Москва</p>
                             </div>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-phone"></i>
                             <div>
                                 <strong>Телефон</strong>
-                                <p>+7 (495) 765-43-21</p>
+                                <p>+7 (495) 111-22-33</p>
                             </div>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <strong>Email</strong>
-                                <p>reservations@gourmethaven.ru</p>
+                                <p>hello@morningbrew.ru</p>
                             </div>
                         </div>
                     </div>
@@ -828,7 +828,7 @@
         <div class="footer-content">
             <div class="footer-column">
                 <h3>О нас</h3>
-                <p>Gourmet Haven - это место, где рождается любовь к изысканной кухне. Мы стремимся создавать уникальные вкусы и дарить нашим гостям незабываемые гастрономические впечатления.</p>
+                <p>Morning Brew - это место, где рождается любовь к кофе. Мы стремимся создавать уникальные вкусы и дарить нашим гостям незабываемые впечатления от каждой чашки.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -838,9 +838,9 @@
             </div>
             <div class="footer-column">
                 <h3>Часы работы</h3>
-                <p><strong>Пн-Пт:</strong> 12:00 - 23:00</p>
-                <p><strong>Сб-Вс:</strong> 12:00 - 00:00</p>
-                <p>Последний заказ принимается за 1 час до закрытия.</p>
+                <p><strong>Пн-Пт:</strong> 7:00 - 22:00</p>
+                <p><strong>Сб-Вс:</strong> 8:00 - 23:00</p>
+                <p>Бронирование столиков принимается за день до визита.</p>
             </div>
             <div class="footer-column">
                 <h3>Быстрые ссылки</h3>
@@ -854,7 +854,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2025 Gourmet Haven. Все права защищены.</p>
+            <p>&copy; 2023 Morning Brew. Все права защищены.</p>
         </div>
     </footer>
 </body>
